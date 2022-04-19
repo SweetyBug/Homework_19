@@ -34,13 +34,31 @@ void CreateData(int[] mass,int len)
 
 void Znach(int[] mass1, int[] mass2)
 {
+    int j = 0;
     int sum = 0;
+    int k = 0;
+
     for(int i = 0; i < mass2.Length; i++)
     {
-        for(int j = 0; j < mass2[i]; j++)
+        double a = mass2[i] - 1;
+        while(k < mass2[i])
         {
-            sum = mass1[mass2[i] - 1 + j] * 2;
+            sum += mass1[j] * (int)(Math.Pow((double)2, a));
+            a--;
+            j++;
+            k++;
         }
+        Console.Write(sum +"; ");
+        sum = 0;
+        k = 0;
+    }
+}
+
+void FillArray(int[] mass)
+{
+    for(int i = 0; i < mass.Length; i++)
+    {
+        Console.Write(mass[i] + "; ");
     }
 }
 
@@ -54,15 +72,13 @@ int[] data = new int[lenData];
 
 CreateInfo(info);
 CreateData(data, lenInfo);
-
-for(int i = 0; i < info.Length; i++)
-{
-    Console.Write(info[i] + "; ");
-}
-
+Console.WriteLine("Массив info: ");
+FillArray(info);
 Console.WriteLine();
+Console.WriteLine("Массив data: ");
+FillArray(data);
+Console.WriteLine();
+Console.WriteLine("Представление чисел в десятичной системе: ");
+Znach(info, data);
 
-for(int j = 0; j < data.Length; j++)
-{
-    Console.Write(data[j] + "; ");
-}
+
